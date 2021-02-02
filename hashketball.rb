@@ -200,8 +200,12 @@ end
 def big_shoe_rebounds
   game_hash.each do |key, value|
     value.each do |teammates, stats|
-      if stats[:shoe] < 18
-      return teammates[:rebounds]
+      if teammates == :players
+        stats.each do |player|
+          if player[:shoe] == 19 #enter biggest shoe number here
+            return player[:rebounds]
+          end
+        end
       end
     end
   end
